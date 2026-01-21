@@ -1,7 +1,7 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 export const useSocket = () => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
-  const WS_URL = "ws://localhost:8000";
+  const WS_URL = "ws://localhost:8080";
 
   useEffect(() => {
     const ws = new WebSocket(WS_URL);
@@ -14,7 +14,7 @@ export const useSocket = () => {
       setSocket(null);
     };
     return () => {
-        console.log("disconnecting websocket");
+      console.log("disconnecting websocket");
       ws.close();
     };
   }, []);
